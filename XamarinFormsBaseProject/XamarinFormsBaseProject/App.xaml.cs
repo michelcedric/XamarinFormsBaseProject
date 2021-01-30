@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using XamarinFormsBaseProject.Interfaces.Services;
+using XamarinFormsBaseProject.ViewModels.Base;
 
 namespace XamarinFormsBaseProject
 {
@@ -9,8 +10,13 @@ namespace XamarinFormsBaseProject
         public App()
         {
             InitializeComponent();
+            InitNavigation();
+        }
 
-            MainPage = new MainPage();
+        private Task InitNavigation()
+        {
+            var navigationService = ViewModelLocator.Resolve<INavigationService>();
+            return navigationService.InitializeAsync();
         }
 
         protected override void OnStart()
