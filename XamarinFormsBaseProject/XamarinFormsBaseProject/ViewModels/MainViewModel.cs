@@ -1,4 +1,5 @@
-﻿using XamarinFormsBaseProject.ViewModels.Base;
+﻿using XamarinFormsBaseProject.Interfaces.Services;
+using XamarinFormsBaseProject.ViewModels.Base;
 
 namespace XamarinFormsBaseProject.ViewModels
 {
@@ -6,9 +7,9 @@ namespace XamarinFormsBaseProject.ViewModels
     {
         private string _name;
 
-        public MainViewModel()
+        public MainViewModel(IDataService dataService)
         {
-            Name = "Cédric Michel";
+            Name = dataService.GetUserName();
         }
 
         public string Name

@@ -20,6 +20,7 @@ namespace XamarinFormsBaseProject.ViewModels.Base
             _container = new TinyIoCContainer();
             _container.Register<MainViewModel>();
             _container.Register<INavigationService, NavigationService>();
+            _container.Register<IDataService, DataService>();
         }
 
         public static bool GetAutoWireViewModel(BindableObject bindable)
