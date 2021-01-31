@@ -1,4 +1,7 @@
-﻿using XamarinFormsBaseProject.Interfaces.Services;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+using XamarinFormsBaseProject.Interfaces.Services;
 using XamarinFormsBaseProject.ViewModels.Base;
 
 namespace XamarinFormsBaseProject.ViewModels
@@ -20,6 +23,13 @@ namespace XamarinFormsBaseProject.ViewModels
                 _name = value;
                 RaisePropertyChanged(() => Name);
             }
+        }
+
+        public ICommand NavigateCommand => new Command(async () => await OpenSecondView());
+
+        private async Task OpenSecondView()
+        {
+            await NavigationService.NavigateToAsync<SecondViewModel>();
         }
     }
 }
